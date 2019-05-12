@@ -95,7 +95,7 @@ def setupLogger(config):
     log_file = logging_ini['log_file']
     log_format = logging_ini['log_format']
     log_level = logging_ini['log_level']
-    print(log_format)
+
     if log_file:
         file_handler = logging.handlers.RotatingFileHandler(log_file,
                                                             maxBytes=1048576,
