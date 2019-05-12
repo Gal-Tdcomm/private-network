@@ -1,12 +1,13 @@
-import logging
-import logging.handlers
-import requests
 import configparser
 import json
-import urllib
+import logging
+import logging.handlers
 import os
+import urllib
 
+import requests
 from aiohttp import web
+from aiohttp_requests import requests
 
 AUTH_KEY_SRV_VERSION = "1.0"
 G_LOGGER = None
@@ -20,7 +21,7 @@ async def sendAuthVectorsRequest(aucRequest):
     #    headers = {'Content-Type': 'application/json', 'Authorization': 'tdcomm yhshEUO@3XhXnT'}
 
     try:
-        resp = requests.get(url, headers=headers)
+        resp = await requests.get(url, headers=headers)
         # time.sleep(1)
         auc_response = {
             'user_reference': aucRequest['user_reference'],
@@ -30,7 +31,8 @@ async def sendAuthVectorsRequest(aucRequest):
             'responding_node': aucRequest['node_type'],
         }
 
-        resp_content = json.loads(resp.content)
+        # resp_content = json.loads(resp.content)
+        resp_content = await resp.json()
         G_LOGGER.debug("sendAuthVectorsRequest got response: " + str(resp_content))
 
         if "data" in resp_content:
