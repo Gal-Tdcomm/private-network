@@ -57,7 +57,7 @@ Example:
             "psc" : "10"
         }
 ```
->Body:
+Body:
 ```json
         {
             "rat" : "3g",
