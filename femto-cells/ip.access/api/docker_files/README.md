@@ -9,7 +9,7 @@
 
 **Request**\
 URI: `http://<api-ip>:5000/get_params/3g` \
-Method: `GET`\
+Method: `GET`
 
 **Response**
 ```json
@@ -44,7 +44,7 @@ Method: `GET`\
 2. set parameters:
 
 **Request:**\
-URI: `192.168.0.12:5000/set_params`\
+URI: `http://<api-ip>::5000/set_params`\
 Method: `Post`\
 Body:
 ```json
