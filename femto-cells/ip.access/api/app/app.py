@@ -22,7 +22,7 @@ def get_parameters(id):
     elif id == '4g':
         G_logger.info('Return %s id parameters'%(id))
         lte = cell_objects.Cell_4G(ip['4G'],G_logger)
-        params = lte.get_cell_parameter()
+        params = lte.get_cell_parameters()
         return json.dumps(params, sort_keys=True, indent=4)
     return 'Unknown id'
 
@@ -43,7 +43,7 @@ def set_parameters():
         plmnid = "{}{}".format(content['mcc'],content['mnc'])
         tac= content['tac']
         cid = content['l3CellId']
-        earfcn = content['bw']
+        earfcn = content['earfcn']
         bw = content['lteBandwidth']
         pci = content['pci']
         band = content['bandId']
@@ -89,7 +89,7 @@ def init_logger():
     console_handler.setFormatter(format)
     
     G_logger = logging.getLogger('ip-access')
-    G_logger.level = logging.DEBUG
+    G_logger.level = logging.INFO
     G_logger.addHandler(console_handler)
 
     return G_logger
@@ -98,5 +98,3 @@ def init_logger():
 if __name__ == '__main__':
     G_logger = init_logger()
     app.run(host='0.0.0.0', port='5000')
-    # x = cell_objects.Cell_3G(ip['3G'],G_logger)
-    # x.set_cell_paramters(42519,33652,20,569,10758,10)

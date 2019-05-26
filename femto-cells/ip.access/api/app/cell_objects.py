@@ -270,7 +270,7 @@ class Cell_4G:
             time.sleep(2)
             self.client.close()
         except Exception:
-            self.logger.critcal('Unable to set admin-state in 4G %s'%(self.ip))
+            self.logger.critical('Unable to set admin-state in 4G %s'%(self.ip))
 
 
 

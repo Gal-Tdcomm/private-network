@@ -94,6 +94,14 @@ set system.Device.Services.FAPService.1.CellConfig.UMTS.RAN.RF.PCPICHPower = "-1
 set system.Device.Services.FAPService.1.REM.X_000295_ExternalPaGain = 440
 ```
 
+### REBOOT required after changing the following parameters
+* RNCID
+* PLMNID
+* LAC
+* RAC
+* UARFCN-PSC
+
+
 
 
 
