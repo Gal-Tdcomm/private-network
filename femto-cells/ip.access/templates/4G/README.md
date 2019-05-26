@@ -58,11 +58,11 @@ REDIRECTOR_URL​
 string​
 0​
 http://192.168.0.30/acs
-```
+```nsta
 2. change parameter in DB:
 | Parameter | Information |example |
 | --- | --- | --- |
-| TR69 state | 0-diable, 1- enable | `sqlite3 /sysconfig/commonstate.db "update SysConfigInfo set Tr069Enabled='0'"`|
+| TR69 state | 0-diable, 1- enable | `sqlite3 /sysconfig/commote.db "update SysConfigInfo set Tr069Enabled='0'"`|
 
 
 

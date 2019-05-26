@@ -1,0 +1,56 @@
+['Scheduling priority range min 0, max 0\r\n',
+ 'Created task TIMER\n',
+ 'Created task SOIP_MONITOR\n',
+ 'Created task SYS_AGENT\n',
+ 'Created task DMI_CTRL\n',
+ 'Created task DMI_PARSE\n',
+ 'Created task DMI_CLI\n',
+ 'Completed initialisation\n',
+ 'Blocking the main thread\n',
+ 'Calling entry function for task 1\n',
+ 'Calling entry function for task 2\n',
+ 'Calling entry function for task 0\n',
+ 'Calling entry function for task 3\n',
+ 'Calling entry function for task 4\n',
+ 'Calling entry function for task 5\n',
+ 'CTRL: Attempting to connect to MgrApp\n',
+ 'CTRL: Attempting to connect to MgrApp\n',
+ 'CTRL: Connection opening was successful.\n',
+ 'CTRL: Attempting to open stream oam.\n',
+ 'CTRL: Stream opening was successful.\n',
+ 'CTRL: Successfully connected to MgrApp\n',
+ 'get system.Device.Services.FAPService.1.CellConfig.UMTS.CN.LACRAC\n',
+ 'get system.Device.Services.FAPService.1.CellConfig.UMPARAMETER RESPONSE:\n', 'S.0.0.0.8.0.1.0.0.3.4 ' '(root.system.Device.Services.FAPService.1.CellConfig.UMTS.CN.LACRAC) = ''"33961:10"\n',
+ ' = "33961:10"\n',
+ 'dmi> CCN.PLMNID\u200b\n',
+ 'Unrecognised parameter name - '
+ '"root.system.Device.Services.FAPService.1.CellConfig.UMTS.CN.PLMNID\u200b"\n',
+ 'dmi> get system.Device.Services.FAPService.1.CellConfig.UMTS.RAN.CellID\n',
+ 'get system.DPARAMETER RESPONSE:\n',
+ 'v  .0.0.0.8.0.1.0.0.0.13 '
+ '(root.system.Device.Services.FAPService.1.CellConfig.UMTS.RAN.CellID) = '
+ '130539\n',
+ 'dmi> dmi> ice.Services.FAPService.1.CellConfig.UMTS.RAN.RNCID\n',
+ 'get syPARAMETER RESPONSE:\n',
+ 'PARAMETER RESPONSE:\n',
+ 'emm    .0.0.0v.0.0.8cee..1.1.0e.0.0.0v.7.7 '
+ '(root.system.Device.Services.FAPService.1.CellConfig.UMTS.RAN.RNCID) = 1\n',
+ 'dmi> ices.FAPService.1.CellConfig.UMTS.RAN.RF.PCPICHPower\u200b\n',
+ 'Unrecognised parameter name - '
+ '"root.system.Device.Services.FAPService.1.CellConfig.UMTS.RAN.RF.PCPICHPower\u200b"\n',
+ 'dmi> get '
+ 'system.Device.Services.FAPService.1.REM.X_000295_RFParamsCandidateList\u200b\n',
+ 'Unrecognised parameter name - '
+ '"root.system.Device.Services.FAPService.1.REM.X_000295_RFParamsCandidateList\u200b"\n',
+ 'dmi> get system.Device.Services.FAPService.1.FAPControl.UMTS.AdminState\n',
+ 'gePARAMETER RESPONSE:\n',
+ '  .0.0.0.8.0.1.2.0.1 ( '
+ '(root.system.Device.Services.FAPService.1.FAPControl.UMTS.AdminState) is '
+ 'U/A\n',
+ ' is U/A\n',
+ 'dmi> dmi> ystem.Device.Services.FAPService.1.FAPControl.UMTS.RFTxStatus\n',
+ 'PARAMETER RESPONSE:\n',
+ '  .0.0.0.8.0.1.2.0.0 '
+ '(root.system.Device.Services.FAPService.1.FAPControl.UMTS.RFTxStatus) = '
+ 'FALSE\n',
+ 'dmi> ']
