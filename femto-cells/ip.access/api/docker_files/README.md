@@ -6,11 +6,12 @@
 
 ## 3G API
 1. get parameters configured in femto-cell:\
-   **Request**\
-   URI: `http://<api-ip>:5000/get_params/3g` \
-   Method: `GET`\
 
-   **Response**
+**Request**\
+URI: `http://<api-ip>:5000/get_params/3g` \
+Method: `GET`\
+
+**Response**
 ```json
         {
             "Admin-state": {
@@ -40,23 +41,11 @@
         }
 ```
 
-2. set parameters:\
-**Request:**
+2. set parameters:
+
+**Request:**\
 URI: `192.168.0.12:5000/set_params`\
 Method: `Post`\
-Example: 
-```json
-        {
-            "rat" : "3G",
-            "mcc" : "460",
-            "mnc" : "19",
-            "rac" : "15",
-            "lac" : "33500",
-            "cellId" : "580",
-            "uarfcn" : "10786",
-            "psc" : "10"
-        }
-```
 Body:
 ```json
         {
@@ -70,6 +59,44 @@ Body:
             "psc" : "<psc>"
         }
 ```
+Example: 
+```json
+        {
+            "rat" : "3G",
+            "mcc" : "460",
+            "mnc" : "19",
+            "rac" : "15",
+            "lac" : "33500",
+            "cellId" : "580",
+            "uarfcn" : "10786",
+            "psc" : "10"
+        }
+```
+
+**Response**\
+Check the current configured parameters and return them like response in section 1 of get `http://<api-ip>:5000/get_params/3g`
+
+3. RF state:
+
+**Request**\
+URI: `http://<api-ip>::5000/set_rf_state`\
+Method: `POST`\
+Body:
+```json
+{
+	"rat" : "3g",
+	"state" : "<0/1>"
+}
+```
+* 0 - tx off , 1 - tx on\
+Example:
+```json
+{
+	"rat" : "3g",
+	"state" : "1"
+}
+```
+
 
 
 
