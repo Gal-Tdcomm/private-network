@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  private-network:
+    image: private-network
+    build: .
+    ports:
+      - 5000:5000
