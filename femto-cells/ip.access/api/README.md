@@ -1,10 +1,10 @@
 # IP.access API
-## Requirements
+## Requirements for running server
 * docker-engine
 * docker-compose
 * port **5000** on host.
 
-## 3G API
+## 3G API - Reference
 1. get parameters configured in femto-cell:\
 
 **Request**\
