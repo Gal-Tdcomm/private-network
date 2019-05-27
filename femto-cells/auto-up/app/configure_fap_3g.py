@@ -42,7 +42,7 @@ def min_reference():
     min_reference = int(min_tx_pow) - 10 * log10(int(rs)*12)
     client_4g.exec_command(db_cmd_4g + "\"update FAPServiceFAPControlLTE set AdminState='0'\"")
     client_4g.exec_command(db_cmd_4g + "\"UPDATE FAPServiceCellConfigLTERANRF set ReferenceSignalPower=\'{}\'\"".format(min_reference))
-    time.sleep(15)
+    time.sleep(5)
     client_4g.exec_command(db_cmd_4g + "\"update FAPServiceFAPControlLTE set AdminState='1'\"")
 
 if __name__ == "__main__":
