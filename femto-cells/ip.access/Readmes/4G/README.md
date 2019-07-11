@@ -58,13 +58,11 @@ REDIRECTOR_URL​
 string​
 0​
 http://192.168.0.30/acs
-```nsta
+```
 2. change parameter in DB:
-| Parameter | Information |example |
-| --- | --- | --- |
-| TR69 state | 0-diable, 1- enable | `sqlite3 /sysconfig/commote.db "update SysConfigInfo set Tr069Enabled='0'"`|
-
-
+| Parameter | Information |
+| ---- | ---- | ---- |
+| TR69 state | 0-diable, 1- enable |
 
 **Summary**
 ```
@@ -78,6 +76,13 @@ sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTEEPC set TAC='9'"​
 sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANCommon set CellIdentity='2155'"
 sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTEEPCPLMNList set PLMNID='00102'"​
 sqlite3 /sysconfig/commonstate.db "update SysConfigInfo set Tr069Enabled='0'"
+
+sqlite3 $SQLITE_FEMTO_DB_PATH "UPDATE FAPServiceCellConfigLTERANRF set ReferenceSignalPower='-2'"
+sqlite3 $SQLITE_FEMTO_DB_PATH "UPDATE FAPServiceFAPControlLTE set AdminState='0'"
+sqlite3 $SQLITE_FEMTO_DB_PATH "SELECT RFTxStatus FROM FAPServiceFAPControlLTE"
+sqlite3 $SQLITE_FEMTO_DB_PATH "SELECT AdminState FROM FAPServiceFAPControlLTE"
+sqlite3 $SQLITE_FEMTO_DB_PATH "SELECT * FROM DeviceFaultMgmtCurrentAlarm"
+sqlite3 $SQLITE_FEMTO_DB_PATH "SELECT * FROM DeviceFaultMgmtHistoryEvent"
 ```
 
 ### FEM 
@@ -88,12 +93,52 @@ sqlite3 /sysconfig/commonstate.db "update SysConfigInfo set Tr069Enabled='0'"
 | Parameter | Information |example |
 | --- | --- | --- |
 | RSP | Reference signal power between max to min (Example gain 44 dBm) | `sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANRF set ReferenceSignalPower=21"​`|
-| Gain | change the max tx power of the S60 (gain in dB * 10) | `sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANRF set X_000295_ExternalPAGain=440;"`|
-| ZCZC | Defining the range of operating (8=5km)| `sqlite3 $SQLITE_FEMTO_DB_PATH "updat FAPServiceCellConfigLTERANPHYPRACH set ZeroCorrelationZoneConfig=8"` |​
+| Gain | change the max tx power of the S60 (gain in dB * 10) | `sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANRF set X_000295_ExternalPAGain=440;"` |
+| ZCZC | Defining the range of operating (8=5km) | `sqlite3 $SQLITE_FEMTO_DB_PATH "updat FAPServiceCellConfigLTERANPHYPRACH set ZeroCorrelationZoneConfig=8"` |​ 
 
 **Summary**
 ```
+sqlite3 $SQLITE_FEMTO_DB_PATH "UPDATE FAPServiceFAPControlLTE set AdminState='0'"
 sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANRF set ReferenceSignalPower=21"
 sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANRF set X_000295_ExternalPAGain=440"
-sqlite3 $SQLITE_FEMTO_DB_PATH "updat FAPServiceCellConfigLTERANPHYPRACH set ZeroCorrelationZoneConfig=8"
+sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANPHYPRACH set ZeroCorrelationZoneConfig=8"
 ```
+
+### NWL
+**Fast scan**
+1. disbale-
+```
+    ipaDbi -c internalDbUpdate "update featureActivation set NwlFastScanEnable =0;"
+    /bin/sh /opt/ipaccess/bin/fastNmmConf 2 0
+```
+
+2. enable-
+```
+    ipaDbi -c internalDbUpdate "update featureActivation set NwlFastScanEnable =1;"
+    /bin/sh /opt/ipaccess/bin/fastNmmConf 2 0
+```
+
+reboot between changing 
+
+**scan configuration**
+1. UMTS -
+```
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.REMBandList 3,7
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.EUTRACarrierARFCNDLList "1283,1300"
+```
+2. LTE -
+``` 
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.UMTS.WCDMA.REMBandList "I"
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.UMTS.WCDMA.UARFCNDLList "10788,10763"
+```
+
+3. Others -
+```
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.ScanPeriodically 0
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.ScanOnBoot 0
+```
+
+4. Operations -\
+    a. start - `
+ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.X_000295_NWLCommand 'Start NWL'`\
+    b. stop - `ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.X_000295_NWLCommand 'Stop NWL'`
