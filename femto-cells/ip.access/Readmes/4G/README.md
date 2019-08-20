@@ -109,24 +109,24 @@ sqlite3 $SQLITE_FEMTO_DB_PATH "update FAPServiceCellConfigLTERANPHYPRACH set Zer
 1. disbale-
 ```
     ipaDbi -c internalDbUpdate "update featureActivation set NwlFastScanEnable =0;"
-    /bin/sh /opt/ipaccess/bin/fastNmmConf 2 0
 ```
 
 2. enable-
 ```
     ipaDbi -c internalDbUpdate "update featureActivation set NwlFastScanEnable =1;"
-    /bin/sh /opt/ipaccess/bin/fastNmmConf 2 0
+    /bin/sh /opt/ipaccess/bin/fastNmmConf 1 0 (without LNA)
+    /bin/sh /opt/ipaccess/bin/fastNmmConf 1 1 (with LNA)
 ```
 
 reboot between changing 
 
 **scan configuration**
-1. UMTS -
+1. LTE -
 ```
 ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.REMBandList 3,7
 ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.LTE.EUTRACarrierARFCNDLList "1283,1300"
 ```
-2. LTE -
+2. UMTS -
 ``` 
 ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.UMTS.WCDMA.REMBandList "I"
 ipaDbi -c setParameterValues Device.Services.FAPService.1.REM.UMTS.WCDMA.UARFCNDLList "10788,10763"
